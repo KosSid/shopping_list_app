@@ -13,3 +13,19 @@ export const logInWithPassword = async ({
   if (error) throw new Error(error.message);
   return data;
 };
+
+export const getCurrentUser = async () => {
+  // is an active session available for the current user
+  const { data: session } = await supabase.auth.getSession();
+  if (!session.session) return null;
+
+  // if active session is not null, to get user from server
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error) throw new Error(error.message);
+
+  return user;
+};

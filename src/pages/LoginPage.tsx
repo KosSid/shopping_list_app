@@ -4,7 +4,7 @@ import logo from '../assets/logo7.webp';
 
 const LoginPage: React.FC = () => {
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center bg-gray-50">
+    <div className="w-screen h-screen flex flex-col justify-center items-center bg-gray-50">
       <div className="mb-4 flex flex-col items-center">
         <img
           src={logo}

@@ -37,7 +37,7 @@ const LoginForm: React.FC = () => {
     login(
       { email, password },
       {
-        onError: () => reset(),
+        onSettled: () => reset(),
       }
     );
   };
@@ -96,7 +96,7 @@ const LoginForm: React.FC = () => {
         <button
           type="submit"
           disabled={isPending}
-          className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-base sm:text-sm md:text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none active:scale-95 active:shadow-sm transition ease-in duration-150"
+          className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none active:scale-95 active:shadow-sm transition ease-in duration-150"
         >
           {!isPending ? <span>Sign In</span> : <Spinner size="small" />}
         </button>

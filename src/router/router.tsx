@@ -3,11 +3,16 @@ import AppLayout from '../pages/AppLayout';
 import PageNotFound from '../pages/PageNotFound';
 import ShoppingList from '../views/shoppingList/ShoppingList';
 import LoginPage from '../pages/LoginPage';
+import ProtectedRoute from './ProtectedRoute';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     errorElement: <PageNotFound />,
     children: [
       { index: true, element: <Navigate to="shopping" replace /> },

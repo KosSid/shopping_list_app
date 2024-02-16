@@ -15,7 +15,9 @@ export const useLoginWithPassword = () => {
     },
     onError: (err) => {
       toast.error(err.message);
-      throw new Error(`Failed login with email and password => ${err.message}`);
+      throw new Error(
+        `Provided login and email are incorrect => ${err.message}`
+      );
     },
   });
   return { login, isPending };
