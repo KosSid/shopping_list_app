@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import Spinner from './Spinner';
 import { useLoginWithPassword } from '../hooks/useLoginWithPassword';
+import CommonButton from './CommonButton';
 
 const schema = z.object({
   email: z
@@ -91,15 +91,10 @@ const LoginForm: React.FC = () => {
           )}
         </div>
       </div>
-
       <div>
-        <button
-          type="submit"
-          disabled={isPending}
-          className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none active:scale-95 active:shadow-sm transition ease-in duration-150"
-        >
-          {!isPending ? <span>Sign In</span> : <Spinner size="small" />}
-        </button>
+        <CommonButton type="submit" isPending={isPending}>
+          <span>Sign In</span>
+        </CommonButton>
       </div>
     </form>
   );

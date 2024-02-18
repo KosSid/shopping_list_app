@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import LogoutButton from '../components/LogoutButton';
 import { useLogout } from '../hooks/useLogout';
+import CommonButton from '../components/CommonButton';
+import { FiLogOut } from 'react-icons/fi';
 
 const AppLayout: React.FC = () => {
   const { logout, isPending } = useLogout();
@@ -9,7 +10,14 @@ const AppLayout: React.FC = () => {
   return (
     <div className="flex flex-col h-screen">
       <div className="py-3 px-2">
-        <LogoutButton onClick={logout} isPending={isPending} />
+        <CommonButton
+          type="button"
+          onClick={logout}
+          isPending={isPending}
+          variant="logout"
+        >
+          <FiLogOut size={18} className="mr-1" /> Logout
+        </CommonButton>
       </div>
       <main className="container mx-auto grow bg-green-50">
         <Outlet />
