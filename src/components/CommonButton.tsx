@@ -5,7 +5,7 @@ interface CommonButtonProps {
   type: 'button' | 'submit';
   onClick?: () => void;
   isPending?: boolean;
-  variant?: 'primary' | 'logout';
+  variant?: 'primary' | 'icon' | 'icon-secondary';
   children: React.ReactNode;
 }
 
@@ -24,8 +24,11 @@ const CommonButton: React.FC<CommonButtonProps> = ({
     case 'primary':
       variantClasses = 'text-white bg-indigo-600 hover:bg-indigo-700';
       break;
-    case 'logout':
+    case 'icon':
       variantClasses = 'text-indigo-600 bg-white hover:bg-gray-100';
+      break;
+    case 'icon-secondary':
+      variantClasses = 'text-gray-700 hover:bg-gray-100'; // Customize these!
       break;
     default:
       variantClasses = '';

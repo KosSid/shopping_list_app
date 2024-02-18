@@ -2,8 +2,8 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AppLayout from '../pages/AppLayout';
 import PageNotFound from '../pages/PageNotFound';
 import ShoppingList from '../views/shoppingList/ShoppingList';
-import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
+import LoginSignUpPage from '../pages/LoginSignUpPage';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LoginPage />,
+    element: <LoginSignUpPage />,
+  },
+  {
+    path: '/sign-up',
+    element: <LoginSignUpPage />,
   },
 ]);
 

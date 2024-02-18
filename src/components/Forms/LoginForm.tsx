@@ -1,21 +1,9 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useLoginWithPassword } from '../hooks/useLoginWithPassword';
-import CommonButton from './CommonButton';
-
-const schema = z.object({
-  email: z
-    .string()
-    .email({ message: 'Invalid email address' })
-    .nonempty({ message: 'Email is required' }),
-  password: z
-    .string()
-    .min(8, { message: 'Password must be at least 8 characters long' }),
-});
-
-export type LoginFormInputs = z.infer<typeof schema>;
+import { useLoginWithPassword } from '../../hooks/useLoginWithPassword';
+import CommonButton from '../CommonButton';
+import { LoginFormInputs, logInSchema } from './zod_schema/login_zod_schema';
 
 const LoginForm: React.FC = () => {
   const { login, isPending } = useLoginWithPassword();
@@ -26,7 +14,7 @@ const LoginForm: React.FC = () => {
     reset,
     formState: { errors },
   } = useForm<LoginFormInputs>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(logInSchema),
   });
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async ({

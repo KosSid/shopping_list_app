@@ -1,5 +1,27 @@
 import supabase from './supabase';
-import { LoginFormInputs } from '../components/LoginForm';
+import { LoginFormInputs } from '../components/Forms/zod_schema/login_zod_schema';
+import { SignupFormInputs } from '../components/Forms/zod_schema/signup_zod_schema';
+
+type SignUpType = Omit<SignupFormInputs, 'confirmPassword'>;
+
+export const signUpWithPassword = async ({
+  email,
+  password,
+  username,
+}: SignUpType) => {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        username,
+      },
+    },
+  });
+
+  if (error) throw new Error(error.message);
+  return data;
+};
 
 export const logInWithPassword = async ({
   email,

@@ -10,14 +10,16 @@ const AppLayout: React.FC = () => {
   return (
     <div className="flex flex-col h-screen">
       <div className="py-3 px-2">
-        <CommonButton
-          type="button"
-          onClick={logout}
-          isPending={isPending}
-          variant="logout"
-        >
-          <FiLogOut size={18} className="mr-1" /> Logout
-        </CommonButton>
+        <div className="w-fit">
+          <CommonButton
+            type="button"
+            onClick={logout}
+            isPending={isPending}
+            variant="icon"
+          >
+            <FiLogOut size={18} className="mr-1" /> Logout
+          </CommonButton>
+        </div>
       </div>
       <main className="container mx-auto grow bg-green-50">
         <Outlet />

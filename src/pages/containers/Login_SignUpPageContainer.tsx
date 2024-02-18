@@ -1,8 +1,11 @@
-import React from 'react';
-import LoginForm from '../components/LoginForm';
-import logo from '../assets/logo7.webp';
+import React, { PropsWithChildren } from 'react';
+import logo from '../../assets/logo7.webp';
 
-const LoginPage: React.FC = () => {
+interface Login_SignUpPageContainerProps extends PropsWithChildren {}
+
+const Login_SignUpPageContainer: React.FC<Login_SignUpPageContainerProps> = ({
+  children,
+}) => {
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center bg-gray-50">
       <div className="mb-4 flex flex-col items-center">
@@ -16,10 +19,10 @@ const LoginPage: React.FC = () => {
         </h4>
       </div>
       <div className="container w-full max-w-xs px-4 sm:max-w-sm sm:px-6 md:max-w-md md:px-8 lg:max-w-lg xl:max-w-xl mx-auto py-8 bg-white rounded-lg shadow-xl">
-        <LoginForm />
+        {children}
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default Login_SignUpPageContainer;
