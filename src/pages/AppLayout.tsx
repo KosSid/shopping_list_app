@@ -1,14 +1,29 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import CommonButton from '../components/CommonButton';
+import { FiLogOut } from 'react-icons/fi';
 
 const AppLayout: React.FC = () => {
+  const { logout, isPending } = useLogout();
+
   return (
     <div className="flex flex-col h-screen">
-      <div className="bg-green-200 text-lg py-3 text-gray-700">Header</div>
+      <div className="py-3 px-2">
+        <div className="w-fit">
+          <CommonButton
+            type="button"
+            onClick={logout}
+            isPending={isPending}
+            variant="icon"
+          >
+            <FiLogOut size={18} className="mr-1" /> Logout
+          </CommonButton>
+        </div>
+      </div>
       <main className="container mx-auto grow bg-green-50">
         <Outlet />
       </main>
-      <div className="bg-green-200 text-lg py-3 text-gray-700">Footer</div>
     </div>
   );
 };
