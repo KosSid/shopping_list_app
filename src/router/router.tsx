@@ -30,6 +30,14 @@ const router = createBrowserRouter([
     path: '/sign-up',
     element: <LoginSignUpPage />,
   },
+  {
+    path: '/reset-password',
+    element: <LoginSignUpPage />,
+  },
+  {
+    path: '/update-password',
+    element: <LoginSignUpPage />,
+  },
 ]);
 
 export default router;
